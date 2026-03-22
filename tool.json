@@ -1,0 +1,60 @@
+{
+  "name": "Weather Tool",
+  "version": "1.0.0",
+  "description": "Fetches current weather data for a given location using wttr.in service",
+  "author": "Open",
+  "category": "utility",
+  "port": 3000,
+  "env_vars": [],
+  "endpoints": {
+    "health": "GET /health",
+    "execute": "POST /execute"
+  },
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "Location to get weather for (city name, coordinates, etc.)"
+      }
+    },
+    "required": ["location"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string"
+          },
+          "weather": {
+            "type": "string"
+          },
+          "temperature_c": {
+            "type": "number"
+          },
+          "temperature_f": {
+            "type": "number"
+          },
+          "humidity_percent": {
+            "type": "number"
+          },
+          "windspeed_kmh": {
+            "type": "number"
+          },
+          "observation_time": {
+            "type": "string"
+          }
+        }
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}
